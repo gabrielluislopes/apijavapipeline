@@ -5,12 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/clientes")
-public class ClienteController {
+@RequestMapping("/teste")
+public class TestController {
 
     @GetMapping
-    public void getAll(){
-        System.out.println("Método /clientes/getAll");
+    public void teste() {
+        System.out.println("Está funcionando. ESTÁ FUNCIONANDO!!!");
     }
-
 }
