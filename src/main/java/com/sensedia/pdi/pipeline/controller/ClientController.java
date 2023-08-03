@@ -1,34 +1,44 @@
 package com.sensedia.pdi.pipeline.controller;
 
+import com.sensedia.pdi.pipeline.model.Client;
+import com.sensedia.pdi.pipeline.service.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/clientes")
 public class ClientController {
 
+    @Autowired
+    private ClientService clientService;
+
     @GetMapping
-    public void getAll(){
-        System.out.println("Método /clientes/getAll");
+    public List<Client> getAll(){
+        return this.clientService.getAll();
     }
 
     @GetMapping("/{id}")
-    public void getById(){
-        System.out.println("Método /clientes/getById");
+    public Client getById(@PathVariable String id){
+        return this.clientService.getById(id);
     }
 
     @PostMapping
-    public void create(){
-        System.out.println("Método /clientes/create");
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public void create(@RequestBody Client client){
+        this.clientService.create(client);
     }
 
     @PutMapping
-    public void update(){
-        System.out.println("Método /clientes/update");
+    public void update(@RequestBody Client client){
+        this.clientService.update(client);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(){
-        System.out.println("Método /clientes/delete");
+    public void delete(@PathVariable String id){
+        this.clientService.delete(id);
     }
 
 }
