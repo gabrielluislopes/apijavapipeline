@@ -1,2 +1,1 @@
-# apijavapipeline
-Projeto de estudo sobre pipelines.
+#Projeto de estudos sobre Pipelines.
